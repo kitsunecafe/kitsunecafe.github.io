@@ -1,5 +1,11 @@
 {% extends "base.html" %}
-{% block title %}{{ frontmatter.title }} - Kitsune Cafe{% endblock title %}
+{% block title %}
+  {% if frontmatter.title is defined %}
+    {{ frontmatter.title }} - Kitsune Cafe
+  {% else %}
+    Kitsune Cafe
+  {% endif %}
+  {% endblock title %}
 {% block body %}
 <main class="flex column has-border-radius has-padding has-bg has-shadow">
     {{ content }}
