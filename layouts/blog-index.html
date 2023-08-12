@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block body %}
+<main class="flex column has-border-radius has-padding has-bg has-shadow">
+  <ul>
+  {% for post in data.blog
+    | filter(attribute="frontmatter.date")
+    | sort(attribute="frontmatter.date")
+    | reverse %}
+    {% if post.slug != slug %}
+    <li>
+      <a href="{{ post.slug }}">{{ post.frontmatter.title }}</a>
+      <small class="muted">{{ post.frontmatter.date | date(format="%b %e, %Y") }}</small>
+    </li>
+    {% endif %}
+  {% endfor %}
+  </ul>
+</main>
+{% endblock body %}
+

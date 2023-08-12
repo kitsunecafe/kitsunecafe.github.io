@@ -1,0 +1,7 @@
+title: Gourmand
+date: 2021-05-03T00:00:00Z
+type: game
+link: https://mochancrimthann.itch.io/gourmand
+-
+Made in 3 days for the SoloDevelopment Minimalism Jam.
+
