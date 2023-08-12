@@ -3,8 +3,11 @@
 if [ -f ".env" ]; then
 	source .env
 
-  git subtree push --prefix dist origin gh-pages
-	curl -u $GIT_USER:$GIT_TOKEN -X POST https://api.github.com/repos/$GIT_USER/$GIT_REPO/pages/builds
+  #git worktree add "$DIST" "$GH_PAGES_BRANCH"
+  #./generate.sh
+  (cd "$DIST"; git add .)
+  (cd "$DIST"; git commit -m "Built at $(date -R)")
+  git push origin "$GH_PAGES_BRANCH"
 fi
 
 
