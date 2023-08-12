@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>45 Day Roguelike Postmortem - Kitsune Cafe</title>
+  <link rel="stylesheet" href="/public/css/style.css">
+    
+</head>
+
+<body>
+    <div class="full-width center flex column">
+      <div class="main-container flex column full-width has-half-gap">
+        <nav class="center-horizontally flex space-evenly has-border-bottom has-quarter-padding has-bg has-shadow">
+  <div><a href="/">Home</a></div>
+  <div><a href="/blog">Blog</a></div>
+  <div><a href="/projects">Projects</a></div>
+</nav>
+
+
+        
+<main class="flex column has-border-radius has-padding has-bg has-shadow">
+    <h1>45 Day Rogulike Postmortem</h1>
+<p>I worked on a Roguelike game from 8 March 2022 to 22 April 2022. My motivations were to teach myself new things, develop my existing skills, and have fun with the development process. Two out of three isn't bad. <a href="https://mochancrimthann.itch.io/45dr">Give it a try.</a></p>
+<p>Starting a new project is always exciting, so I put in many hours in the first couple of weeks. There's no shortage of inspiring roguelike games, but most of my inspiration was directly from <a href="https://crawl.develz.org/">DCSS</a>. I completed procedural generation, movement, tile visibility, combat, items, enemy AI, and a character controller within the first week and a half. Most of the development was straightforward to reason. I decided early in development to create a new component for each feature to avoid breaking previous ones. Nothing drains my motivation like a week-long bug-fixing marathon.</p>
+<p>My method of generating a dungeon level was disappointingly simple: <a href="https://en.wikipedia.org/wiki/Binary_space_partitioning">binary space partitioning</a>. BSP will determine whether a space can be split in half and then randomly split it vertically or horizontally. Repeat this until the space is sufficiently divided, determine how much of that space to use, then connect it to others with corridors. I separated the logic for generating the space of the dungeon and displaying the dungeon into two separate components: Dungeon Generator and Dungeon Renderer. The renderer is responsible for waiting for the generator to finish and then rendering the tiles onto a Unity tilemap.</p>
+<p>The field of view (FOV) system is simple as well. This system uses another tilemap for rendering visibility. Each tile initializes to black with full opacity (<code>RGBA(0, 0, 0, 1)</code>). The opacity value will change to 0.5 or 0 depending on visibility.</p>
+<p><img src="./values.png" alt="Tile opacity values" /></p>
+<p>When the target entity's FOV updates each turn, the visibility tilemap checks a target's FOV. I used a C# <code>HashSet</code> of coordinates to represent each entity's FOV. The visibility system monitors a target's FOV and sets each visible tile's opacity to 0. Previously visible tiles' opacities are then set to 0.5. Determining which tiles were previously visible is as simple as taking the difference between the last turn's visible tiles and this turn's visible tiles (Previous - Current).</p>
+<p><img src="./opacity-venn.png" alt="Venn diagram of opacity values" /></p>
+<p>Once the dungeon finishes generating, all &quot;decorators&quot; are notified and begin placing objects through the dungeon. Decorators include the player, enemies, stairs, and treasure chests. These components became a dumping ground for hacky code and workarounds, so I tried to ensure this code didn't influence any other systems.</p>
+<p>Procedural item generation took far and away the most amount of time for a disproportionately small payoff. The base item is simple: it's just a list of attributes. Any system which interacts with items queries this list. Moving all the behavior out of the items and into relevant systems allows for more contextual behavior. The idea is that items were naive containers of data, not unlike an ECS entity, and different systems would handle items differently. I wish I had adopted more of an ECS approach with how effective the items were.</p>
+<p>As an example of the item and attribute system, I'll use <code>DamageAttribute</code>. It extends a base attribute called <code>ItemAttribute</code> which has a few overridable properties: <code>Label</code>, <code>EditorDescription</code>, and <code>Description</code>. It also has a string value to accept a <a href="https://en.wikipedia.org/wiki/Dice_notation">dice notation</a> value representing the damage. The string gets parsed into a custom <code>Dice</code> object. The combat system queries all relevant items from the attacker and defender (namely, the attacker's weapon(s) and the defender's armor(s)). It rolls the attacker's hit value versus the defender's armor class (AC) to determine whether the hit connects. If the hit connects, it rolls all damage dice (by querying every item's <code>DamageAttribute</code>). Once the damage is determined, it queries the defender's highest level <code>IDamageHandler</code> and tells it to apply the damage. <code>IDamageHandler</code> is an interface that allows multiple sources of defense to handle incoming damage in a layered way (for example, AC -&gt; elemental resistances -&gt; physical resistances -&gt; health).</p>
+<p>I may have overengineered it a bit given how small the game is, but working with items and their attributes was very easy and let me develop complex systems around them with very little friction. The biggest time-sink was getting Unity to cooperate with these objects. This approach <em>requires</em> custom editor scripts to use their maximum effectiveness. Writing editor scripts for a small game isn't exactly how I wanted to spend my time. I could have probably used <a href="https://unity.com/dots">Unity's DOTS</a> framework, but I've struggled with that before and didn't want to try again. I've made and used ECS frameworks before, but Unity's strikes me as needlessly complicated.</p>
+<p>The UI was rushed at times and required me to rewrite it a few times. Thankfully it was kept minimal, so most of the rewrites didn't take much longer than half an hour. I think I'll pick up a UI framework and use that in the future.</p>
+<p>To my surprise, the most common question and feedback I received was about the &quot;(worn)&quot; tag that's affixed to equipped items. Many people thought it was related to a durability system which makes sense in retrospect -- you can't &quot;wear&quot; a sword. The reason for using &quot;worn&quot; rather than &quot;equipped&quot; was that I'd frequently seen it used in this context, and I wanted to maximize character space for item names. Thanks to everyone who caught this -- it is small but valuable feedback.</p>
+<p>It's too early to say if I want to come back and work on this game. I learned a lot from this experience, and I'm glad I did it. I'm thinking of writing articles on exactly how I implemented certain aspects of the game, so let me know if this would be valuable to you.</p>
+
+</main>
+
+      </div>
+      <footer class="has-padding center">
+        
+        &copy; 2023 Kitsune Cafe - Made with <a href="https://github.com/kitsunecafe/roxy">Roxy</a>
+        
+      </footer>
+    </div>
+</body>
+
+</html>
+

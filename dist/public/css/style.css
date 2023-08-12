@@ -1,0 +1,418 @@
+:root {
+  --softer-black: #232323;
+  --soft-black: #181A18;
+  --black: #171717;
+  --gray: #808080;
+  --light-gray: #ADADAD;
+  --white: #FAF9F6;
+
+  --magenta: #9500FF;
+  --dark-magenta: rgb(104, 0, 179);
+  --yellow: #E1FF00;
+  --gold: #FFD700;
+
+  --dark-orange: #D52D00;
+  --orange: #EF7627;
+  --light-orange: #FF9A56;
+  --magenta-pink: #D162A4;
+  --dusty-pink: #B55690;
+  --dark-rose: #A30262;
+  --lesbian-colors:
+    var(--dark-orange),
+    var(--orange),
+    var(--white),
+    var(--magenta-pink),
+    var(--dusty-pink),
+    var(--dark-rose);
+
+  --lesbian: repeating-linear-gradient(45deg, var(--lesbian-colors));
+
+  --cyan: #5BCEFA;
+  --pink-red: #F5A9B8;
+  --trans-colors:
+      var(--cyan),
+      var(--pink-red),
+      var(--white),
+      var(--pink-red),
+      var(--cyan);
+
+  --trans: repeating-linear-gradient(180deg, var(--trans-colors));
+
+  --background-color: var(--soft-black);
+  --foreground-color: var(--softer-black);
+  --primary-color: var(--magenta);
+  --secondary-color: var(--gold);
+  --tertiary-color: var(--dark-magenta);
+  --muted-color: var(--light-gray);
+
+  --header-color: var(--primary-color);
+  --font-color: var(--white);
+
+  --box-shadow: 7px 7px var(--black);
+
+  --font-family: 'Sintony', sans-serif;
+  --alt-font-family: 'Raleway', sans-serif;
+  --mono-font-family: "Fira Code", 'Courier New', Courier, monospace;
+
+  --border-radius: 3px;
+  --border-width: 1px;
+  --border-color: var(--primary-color);
+  --gradient-border-width: 3px;
+
+  --padding: 1.5rem;
+  --flex-gap: 1rem;
+  --list-item-gap: 0.25rem;
+
+  --mobile-media-width: 320px;
+}
+
+@font-face {
+  font-family: "Sintony";
+  src: url('/public/fonts/sintony/Sintony-Regular.ttf');
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url('/public/fonts/raleway/Raleway-VariableFont_wght.ttf');
+}
+
+@font-face {
+  font-family: "Fira Code";
+  src: url('/public/fonts/fira-code/FiraCode-VariableFont_wght.ttf');
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: none; /* for iOS Safari */
+  text-size-adjust: none; /* for other mobile browsers */
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: var(--font-family);
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--font-color);
+
+  margin: 0;
+  padding: 2rem;
+
+	text-rendering: optimizeLegibility;
+}
+
+p { 
+	-ms-word-break: break-all;
+	word-break: break-all;
+	word-break: break-word;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
+} 
+	/* sets hyphenation by default on paragraphs */
+
+pre {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+pre, code {
+  font-family: var(--mono-font-family);
+}
+	
+textarea { 
+	resize: vertical;
+}
+ /* changes textarea resizing from "both" (UA default) to vertical only */
+ 
+table { border-collapse: collapse; }
+td {
+	padding: .5rem;
+}
+	/* causes tables to actually look like tables */
+	
+img { 
+	border: none;
+	max-width: 100%;
+}
+	/* removes outlines from linked images (for older browsers and IE), sets up images for responsive design layout */
+	
+input[type="submit"]::-moz-focus-inner, 
+	input[type="button"]::-moz-focus-inner {
+		border : 0px;
+	}
+	/* removes the inner border effect from focused buttons for form elements in Firefox */
+	
+input[type="search"] { 
+	-webkit-appearance: textfield;
+  appearance: textfield;
+} 
+input[type="submit"] { 
+	-webkit-appearance:none;
+  appearance: textfield;
+}
+	/* removes the OS X appearance from HTML5 search inputs and submit buttons when viewed in Safari */
+	
+input:required:after {
+	color: #f00;
+	content: " *";
+}
+	/* sets up required form fields with the conventional following red asterix */
+input[type="email"]:invalid { 
+	background: #f00;
+}
+	/* causes a visual alert in browsers that do client-side checking of HTML5 email field – this may already be the default in some browsers. */
+	
+.right { 
+	float: right;
+	margin-left: 2rem;
+	clear: right;
+}
+.left { 
+	float: left;
+	margin-right: 2rem;
+	clear: left;
+}
+
+sub, sup { 
+	line-height: 0;
+}
+
+article, aside, audio, 
+footer, header, nav, section, video {
+	display: block; 
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+menu:not(article menu),
+ol:not(article ol),
+ul:not(article ul) {
+    list-style: none;
+}
+
+article ol,
+article ul {
+    list-style-position: inside;
+}
+
+/* all links */
+a {
+  font-weight: bold;
+}
+
+ /* unvisited link */
+a:link {
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+  color: var(--secondary-color);
+}
+
+/* mouse over link */
+a:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+/* selected link */
+a:active {
+  color: var(--white);
+} 
+
+
+footer {
+  color: var(--muted-color);
+}
+
+hr {
+  color: var(--muted-color);
+}
+
+.main-container {
+  max-width: 640px;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.has-bg {
+  background-color: var(--foreground-color);
+}
+
+.has-border-radius {
+  border-radius: var(--border-radius);
+}
+
+.has-padding {
+  padding: var(--padding);
+}
+
+.has-half-padding {
+  padding: calc(var(--padding) / 2);
+}
+
+.has-quarter-padding {
+  padding: calc(var(--padding) / 4);
+}
+
+.flex {
+  display: flex;
+}
+
+.flex.center {
+  align-items: center;
+  justify-content: center;
+}
+
+.flex.center-horizontally {
+  justify-content: center;
+}
+
+.flex.center-vertically {
+  align-items: center;
+}
+
+.flex.space-evenly {
+  justify-content: space-evenly;
+}
+
+.flex.row-desktop {
+  flex-direction: row;
+}
+
+.flex.row {
+  flex-direction: column;
+}
+
+@media (min-device-width: 640px) {
+  .flex.row {
+    flex-direction: row;
+  }
+}
+
+.flex.column {
+  flex-direction: column;
+}
+
+.flex.has-gap {
+  gap: var(--flex-gap);
+}
+
+.flex.has-quarter-gap {
+  gap: calc(var(--flex-gap) / 4);
+}
+
+.flex.has-half-gap {
+  gap: calc(var(--flex-gap) / 2);
+}
+
+.list-item {
+  margin-right: var(--list-item-gap);
+}
+
+.list-item:last-child {
+  margin-right: 0;
+}
+
+a, h1, h2, h3, h4, h5, h6 {
+  font-family: var(--alt-font-family);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--header-color);
+}
+
+.has-border {
+  border-style: solid;
+  border-width: var(--border-width);
+  border-color: var(--border-color);
+}
+
+.lesbian-border {
+  border: solid calc(var(--gradient-border-width) * 2) transparent;
+  background-image: linear-gradient(
+    var(--foreground-color),
+    var(--foreground-color)),
+    repeating-linear-gradient(0, var(--lesbian-colors)
+  );
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  animation: 2s rotate ease-in-out infinite;
+}
+
+.trans-border {
+  border: solid calc(var(--gradient-border-width) * 2) transparent;
+  background-image: linear-gradient(var(--foreground-color), var(--foreground-color)), var(--trans);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+.circle {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile {
+  width: 128px;
+  height: auto;
+}
+
+.info-fields article {
+  display: grid;
+  grid-template-columns: 20ch auto;
+  border: 1px var(--border-color) solid;
+  border-radius: var(--border-radius);
+  padding: 0.5rem;
+  background-color: rgba(var(--dark-magenta), 0.05);
+}
+
+.info-fields article:not(:last-child) {
+  margin-bottom: -1px;
+}
+
+.info-fields article dt {
+  font-weight: bold;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.muted {
+  color: var(--muted-color);
+}
+
+.accent {
+  color: var(--primary-color)
+}
+
+.has-shadow {
+  box-shadow: var(--box-shadow);
+}
+
