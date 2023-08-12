@@ -1,7 +1,7 @@
 title: kitsu.cafe
-date: 2021-12-06T00:00:00Z
+date: 2023-08-12T00:05:30Z
 type: site
-link: https://kitsu.cafe
+link: https://github.com/kitsunecafe/kitsunecafe.github.io
 -
-The old version of this site, made over a weekend with Gatsby.
+This website -- made with [Roxy](https://github.com/kitsunecafe/roxy).
 
