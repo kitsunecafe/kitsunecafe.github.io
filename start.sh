@@ -9,6 +9,6 @@ trap terminate SIGHUP SIGINT SIGQUIT SIGTERM
 ./inotify.sh "./generate.sh" &
 build=$!
 ./generate.sh
-cd ../kitsu.cafe/
+cd ./dist
 python3 -m http.server
 

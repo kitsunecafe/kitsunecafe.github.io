@@ -15,7 +15,7 @@ function execute() {
 }
  
 inotifywait --recursive --monitor --format "%e %w%f" \
---event modify,move,create,delete ./ \
+--event modify,move,create,delete --exclude ./dist ./ \
 | while read changed; do
     echo $changed
     "$@"

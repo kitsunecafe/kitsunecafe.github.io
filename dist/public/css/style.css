@@ -385,11 +385,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .info-fields article {
   display: grid;
-  grid-template-columns: 20ch auto;
+  grid-template-columns: auto auto;
   border: 1px var(--border-color) solid;
   border-radius: var(--border-radius);
   padding: 0.5rem;
   background-color: rgba(var(--dark-magenta), 0.05);
+}
+
+@media (min-device-width: 640px) {
+  .info-fields article {
+    grid-template-columns: 20ch auto;
+  }
 }
 
 .info-fields article:not(:last-child) {
