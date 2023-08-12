@@ -249,6 +249,21 @@ hr {
   color: var(--muted-color);
 }
 
+nav > * {
+  font-size: 125%;
+  margin-bottom: 0.75rem;
+}
+
+nav > *:last-child {
+  margin-bottom: initial;
+}
+
+@media (min-device-width: 640px) {
+  nav > * {
+    margin-bottom: initial;
+  }
+}
+
 .main-container {
   max-width: 640px;
 }
