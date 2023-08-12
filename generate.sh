@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 
-dist="./dist"
-rm -rf "${dist}/*"
-mkdir -p "${dist}/public/"
-../roxy2/target/debug/roxy -o "${dist}" -t Flatron.tmTheme
-cp -r ./static/* "${dist}/public/"
-echo "kitsu.cafe" > "${dist}/CNAME"
+if [ -f ".env" ]; then
+  source .env
+  rm -rf "${DIST}/*"
+  mkdir -p "${DIST}/public/"
+  ../roxy2/target/debug/roxy -o "${DIST}" -t Flatron.tmTheme
+  cp -r ./static/* "${DIST}/public/"
+  echo "$CNAME" > "${DIST}/CNAME"
+fi
+
 
