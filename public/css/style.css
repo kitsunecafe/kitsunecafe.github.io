@@ -264,7 +264,12 @@ nav > *:last-child {
   }
 }
 
+.name {
+  font-size: 200%;
+}
+
 .main-container {
+  min-width: 340px;
   max-width: 640px;
 }
 
