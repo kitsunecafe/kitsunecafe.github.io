@@ -109,9 +109,14 @@ body {
   color: var(--font-color);
 
   margin: 0;
-  padding: 2rem;
 
 	text-rendering: optimizeLegibility;
+}
+
+@media(min-device-width: 640px) {
+  body {
+    padding: 2rem;
+  }
 }
 
 p { 
