@@ -50,9 +50,9 @@
 
   --box-shadow: 7px 7px var(--black);
 
-  --font-family: 'Sintony', header-fallback, sans-serif;
-  --alt-font-family: 'Raleway', body-fallback, sans-serif;
-  --mono-font-family: "Fira Code", 'Courier New', Courier, monospace;
+  --font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  --alt-font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+  --mono-font-family: 'Courier New', Courier, monospace;
 
   --border-radius: 3px;
   --border-width: 1px;
@@ -66,23 +66,6 @@
   --mobile-media-width: 320px;
 }
 
-@font-face {
-  font-family: "Sintony";
-  src: url('/public/fonts/sintony/Sintony-Regular.ttf');
-  font-display: optional;
-}
-
-@font-face {
-  font-family: "Raleway";
-  src: url('/public/fonts/raleway/Raleway-VariableFont_wght.ttf');
-  font-display: optional;
-}
-
-@font-face {
-  font-family: "Fira Code";
-  src: url('/public/fonts/fira-code/FiraCode-VariableFont_wght.ttf');
-  font-display: optional;
-}
 
 *,
 *::before,
