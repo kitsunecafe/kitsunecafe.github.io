@@ -69,19 +69,19 @@
 @font-face {
   font-family: "Sintony";
   src: url('/public/fonts/sintony/Sintony-Regular.ttf');
-  font-display: swap;
+  font-display: optional;
 }
 
 @font-face {
   font-family: "Raleway";
   src: url('/public/fonts/raleway/Raleway-VariableFont_wght.ttf');
-  font-display: swap;
+  font-display: optional;
 }
 
 @font-face {
   font-family: "Fira Code";
   src: url('/public/fonts/fira-code/FiraCode-VariableFont_wght.ttf');
-  font-display: swap;
+  font-display: optional;
 }
 
 *,
