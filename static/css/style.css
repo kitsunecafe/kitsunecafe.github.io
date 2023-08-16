@@ -50,8 +50,8 @@
 
   --box-shadow: 7px 7px var(--black);
 
-  --font-family: 'Sintony', sans-serif;
-  --alt-font-family: 'Raleway', sans-serif;
+  --font-family: 'Sintony', header-fallback, sans-serif;
+  --alt-font-family: 'Raleway', body-fallback, sans-serif;
   --mono-font-family: "Fira Code", 'Courier New', Courier, monospace;
 
   --border-radius: 3px;
