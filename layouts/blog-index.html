@@ -1,7 +1,7 @@
 {% extends "index.html" %}
 {% block body %}
 <main class="flex column has-border-radius has-padding has-bg has-shadow">
-  <ul>
+  <ul class="no-decoration">
   {% for post in data.blog
     | filter(attribute="frontmatter.date")
     | sort(attribute="frontmatter.date")
