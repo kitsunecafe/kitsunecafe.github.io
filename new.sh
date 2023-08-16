@@ -19,7 +19,7 @@ POST_COUNT=$(count_posts "$CONTENT_DIR")
 DEFAULT_TITLE=$"New post ${POST_COUNT}"
 TITLE="${2:-$DEFAULT_TITLE}"
 SLUG=$(to_slug "$TITLE")
-DATE=$(date +"%F")
+DATE=$(date +"%FT%H:%M:%S")
 
 DIR="$CONTENT_DIR/$SLUG"
 mkdir -p "$DIR"
@@ -30,6 +30,9 @@ date: $DATE
 ---
 # $TITLE
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas malesuada tempus venenatis.
+
 EOF
 awk '{print}' > "$DIR/index.md"
+
+echo "Created ${DIR}/index.md"
 

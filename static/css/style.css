@@ -207,15 +207,13 @@ img {
   max-width: 100%;
 }
 
-menu:not(article menu),
-ol:not(article ol),
-ul:not(article ul) {
-    list-style: none;
+menu:not(article menu) {
+  list-style: none;
 }
 
 article ol,
 article ul {
-    list-style-position: inside;
+  list-style-position: inside;
 }
 
 /* all links */
