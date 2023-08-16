@@ -69,16 +69,19 @@
 @font-face {
   font-family: "Sintony";
   src: url('/public/fonts/sintony/Sintony-Regular.ttf');
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Raleway";
   src: url('/public/fonts/raleway/Raleway-VariableFont_wght.ttf');
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Fira Code";
   src: url('/public/fonts/fira-code/FiraCode-VariableFont_wght.ttf');
+  font-display: swap;
 }
 
 *,
@@ -102,7 +105,6 @@ html, body {
   height: 100%;
   width: 100%;
   font-family: var(--font-family);
-  font-display: swap;
 }
 
 body {
@@ -402,9 +404,11 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
 }
 
-.profile {
+img.profile {
   width: 128px;
   height: auto;
+  aspect-ratio: auto 1;
+
 }
 
 .info-fields > .info-group {
