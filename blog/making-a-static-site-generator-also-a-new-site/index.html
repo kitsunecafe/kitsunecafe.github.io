@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+  
+    Making a Static Site Generator (Also a New Site) - Kitsune Cafe
+  
+  </title>
+  <link rel="stylesheet" href="/public/css/style.css">
+    
+</head>
+
+<body>
+    <div class="full-width center flex column">
+      <div class="main-container flex column full-width has-half-gap">
+        <nav class="center-horizontally flex row center-text space-evenly has-border-bottom has-quarter-padding has-bg has-shadow">
+  <div><a href="/">Home</a></div>
+  <div><a href="/blog">Blog</a></div>
+  <div><a href="/projects">Projects</a></div>
+</nav>
+
+
+        
+<main class="flex column has-border-radius has-padding has-bg has-shadow">
+    <h1>Making a Static Site Generator (Also a New Site)</h1>
+<p>I decided to give my site a much-needed redesign, so in the spirit of making things harder than they need to be, I decided to make my static site generator. You might see &quot;Made with Roxy&quot; at the bottom of this page (unless you're reading this so far in the future that I've changed it again). Roxy is what I've decided to call this generator. I wanted to write a little about my experiences creating it.</p>
+<h2>The Plan</h2>
+<p>Initially, I planned to create <em>everything</em> from scratch -- the file reader, the markdown parser, the syntax highlighter, everything. After a few attempts, I decided that this was entirely silly and scrapped that idea. I also toyed with the idea of using a compile-time layout system but I didn't want to have to recompile a Rust executable every time I made changes to the layouts.</p>
+<p>I finally settled on using <a href="https://tera.netlify.app">Tera</a> as my templating engine. It's Jinja-like and made for Rust with a lot of really useful features. It's significantly slower than compile-time engines but also much more flexible. In addition to a templating engine, I also needed something to parse Markdown files which would be the basis for the content of each page. For this, I used <a href="https://docs.rs/highlight-pulldown/latest/highlight_pulldown/">pulldown-cmark</a>.</p>
+<p>With these two things decided on, my idea was simple: layouts would be defined in one location and content would be defined in another. Most fancy layout stuff would be handled by Tera (includes, extensions, etc) and the data would live in the Markdown. This created two distinct types of data: <code>layouts</code> and <code>content</code>. I also had the idea that the <code>content</code> directory structure should define the site's structure as well. (eg. <code>content/blog/my-post.md</code> becomes <code>domain.com/blog/my-post</code>).</p>
+<h2>The &quot;Implementation&quot;</h2>
+<p>Creating it was straightforward -- in fact, it was so simple that I accidentally deleted the project while trying to push it to git and had to rewrite it. I did it in a few hours (and stayed up until 6 am doing it).</p>
+<p>It only performs a few steps.</p>
+<ol>
+<li>Compile the content from the <code>content</code> directory
+<ol>
+<li>If this filename is prefixed with <code>.</code> (dot), skip it</li>
+<li>Read front matter</li>
+<li>Parse the rest as markdown</li>
+<li>Parse the previous result as a one-off Tera template</li>
+</ol>
+</li>
+<li>Assemble the content into a <code>HashMap</code> 
+<ul>
+<li>This is so it can be easily accessed later</li>
+<li>There is a limitation in my implementation -- Roxy only compiles a map out of the root <code>content</code> directory. This will become relevant later.</li>
+</ul>
+</li>
+<li>Create Tera context
+<ul>
+<li>This is where the content map becomes relevant. This <code>HashMap</code> is serialized and given to each layout. One major use would be to iterate their contents, eg. a blog index that displays all posts. Subdirectories can't be accessed if they aren't recognized as content themselves).</li>
+</ul>
+</li>
+<li>Create output files
+<ol>
+<li>Iterate each content file</li>
+<li>Create a matching directory structure in the output folder (eg. <code>content/blog/my-post.md</code> becomes <code>output/blog/my-post/index.md</code>)</li>
+<li>If it has a <code>layout</code> frontmatter field, try to use that layout, otherwise, use <code>index.html</code> as a default</li>
+<li>Render the template using the context made earlier</li>
+<li>Write out the file</li>
+</ol>
+</li>
+<li>Copy static files to the output folder</li>
+</ol>
+<p>There were a few things I didn't consider in my original plan. Most notably, syntax highlighting and command-line argument parsing. I ended up adding <code>syntect</code> for syntax highlighting and <code>clap</code> for argument parsing. Additionally, there's a quirk based on my decision to tie <code>content</code> to page layout: to create a page, even if it's entirely layout driven, it requires a content file as a placeholder. </p>
+<p>There's a bunch of things Roxy <em>doesn't</em> do</p>
+<ul>
+<li>Create a development web server</li>
+<li>Create new content files from a template</li>
+<li>Initialize a project to give the user an idea of how to use it</li>
+</ul>
+<p>I ended up making bash files to do all that though and they're available in the repository for this website if you'd like to see or use them.</p>
+<p>The code is a disaster and needs to be refactored. I'll do that the minute I have a really good reason to. For now, it works well enough for me, and I <em>really</em> like using it. This is one of the times I'm very happy I decided to make something superfluous for myself.</p>
+
+</main>
+
+      </div>
+      <footer class="has-padding center">
+        
+        &copy; 2023 Kitsune Cafe - Made with <a href="https://github.com/kitsunecafe/roxy">Roxy</a>
+        
+      </footer>
+    </div>
+</body>
+
+</html>
+
