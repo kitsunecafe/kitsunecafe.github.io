@@ -2,7 +2,7 @@ title: Making a Static Site Generator (Also a New Site)
 date: 2023-08-16T01:19:15
 ---
 # Making a Static Site Generator (Also a New Site)
-I decided to give my site a much-needed redesign, so in the spirit of making things harder than they need to be, I decided to make my static site generator. You might see "Made with Roxy" at the bottom of this page (unless you're reading this so far in the future that I've changed it again). Roxy is what I've decided to call this generator. I wanted to write a little about my experiences creating it.
+I decided to give my site a much-needed redesign, so in the spirit of making things harder than they need to be, I decided to make a static site generator. You might see "Made with Roxy" at the bottom of this page (unless you're reading this so far in the future that I've changed it again). Roxy is what I've decided to call this generator. I wanted to write a little about my experiences creating it.
 
 ## The Plan
 
