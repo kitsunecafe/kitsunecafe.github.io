@@ -5,7 +5,7 @@ Unless otherwise noted, all HTML, CSS, and source code are licensed under [MIT].
 
 # Articles and Non-Source Code
 
-All information contained within this blog is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/)
+All information contained within this blog, including information embedded within source code, is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by/4.0/)
 
 A copy of each license provided below.
 
