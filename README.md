@@ -8,3 +8,5 @@ Clone this repo and compile with [Roxy](https://github.com/kitsunecafe/roxy).
 roxy -l layouts -i content -t Flatron.tmTheme -o dist
 ```
 
+Alternatively, use `./start.sh` to start a development server using a `python` web server. These scripts were developed for my Arch environment so they may or may not work anywhere else.
+
