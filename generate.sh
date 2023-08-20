@@ -3,9 +3,9 @@
 if [ -f ".env" ]; then
   source .env
   rm -rf "${DIST}/*"
-  mkdir -p "${DIST}/public/"
+  mkdir -p "${DIST}/"
   ../roxy2/target/debug/roxy -o "${DIST}" -t Flatron.tmTheme
-  cp -r ./static/* "${DIST}/public/"
+  cp -r ./static/* "${DIST}/"
   echo "$CNAME" > "${DIST}/CNAME"
 fi
 
