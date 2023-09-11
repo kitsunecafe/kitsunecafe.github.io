@@ -1,6 +1,6 @@
 # Source, Layouts, and Themes
 
-Unless otherwise noted, all HTML, CSS, and source code are licensed under [MIT].
+Unless otherwise noted, all HTML, CSS, and source code are licensed under MIT.
 
 
 # Articles and Non-Source Code
