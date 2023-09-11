@@ -1,4 +1,3 @@
--
 <div>
     {% include "bio.html" %}
     <div class="has-quarter-padding">

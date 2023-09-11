@@ -1,7 +1,8 @@
+---
 title: legacy kitsu.cafe
 date: 2021-12-06T00:00:00Z
 type: site
 link: https://github.com/kitsunecafe/legacy-kitsucafe
--
+---
 The old version of this site, made over a weekend with Gatsby.
 

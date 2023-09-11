@@ -1,3 +1,4 @@
+---
 title: Simplifying Code with Components
 date: 2021-12-05
 ---

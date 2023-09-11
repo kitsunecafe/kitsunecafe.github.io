@@ -1,3 +1,4 @@
+---
 title: Making a Static Site Generator (Also a New Site)
 date: 2023-08-16T01:19:15
 ---
