@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A portfolio and blog for Rowan, a developer, artist, and musician.">
+    <meta name="keywords" content="Unity, Bevy, JavaScript, Rust, C#, HTML, CSS, Game Development, Programming, Music, Art">
+    <meta name="author" content="Rowan">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+  
+    Kitsune Cafe
+  
+  </title>
+    <link rel="preload" href="/fonts/sintony/Sintony-Regular.ttf" as="font" type="font/ttf">
+    <link rel="preload" href="/fonts/raleway/Raleway-VariableFont_wght.ttf" as="font" type="font/ttf">
+    <link rel="preload" href="/fonts/fira-code/FiraCode-VariableFont_wght.ttf" as="font" type="font/ttf">
+    <link rel="stylesheet" href="/css/style.css">
+  
+</head>
+
+<body>
+    <div class="full-width center flex column">
+      <div class="main-container flex column full-width has-half-gap">
+        <nav class="center-horizontally flex row center-text space-evenly has-border-bottom has-quarter-padding has-bg has-shadow">
+  <div><a href="/">Home</a></div>
+  <div><a href="/blog">Blog</a></div>
+  <div><a href="/projects">Projects</a></div>
+</nav>
+
+
+        
+<main class="flex column has-border-radius has-padding has-bg has-shadow">
+      
+<h1>A Roxy Update</h1>
+<p>I released a new version of Roxy over at <a href="https://fem.mint.lgbt/kitsunecafe/roxy-cli">fem.mint.lgbt</a>. I've been working on it for a few months now, one part because it's more complex than the original, and another part because I had to learn a lot. I want to make a quick rundown of the changes.</p>
+<h2>Philosophy</h2>
+<p>My philosophy about how Roxy should be structured changed as I built V1. The original was focused on simplicity and ease of implementation. Unfortunately, because I didn't account for every feature I wanted from the very beginning, it quickly went from easy to difficult and required a bunch of hacks to finish. </p>
+<p>Roxy's new philosophy is about pluggable behavior. The core is effectively a reducer for anything which <code>impl Read</code>. It's still not the most elegant and there's a <em>lot</em> I've learned from this exercise, I think it's a lot better. It's now possible to easily add new functions to Roxy by adding a new <code>Parser</code>.</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> parser = Parser::new();
+</span><span style="color:#c0c5ce;">    
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> md_parser = MarkdownParser::new();
+</span><span style="color:#c0c5ce;">    parser.</span><span style="color:#96b5b4;">push</span><span style="color:#c0c5ce;">(md_parser);
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    </span><span style="color:#b48ead;">let</span><span style="color:#c0c5ce;"> html_parser = HtmlParser::new();
+</span><span style="color:#c0c5ce;">    parser.</span><span style="color:#96b5b4;">push</span><span style="color:#c0c5ce;">(html_parser);
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">    Roxy::process_file("</span><span style="color:#a3be8c;">input-file.md</span><span style="color:#c0c5ce;">", "</span><span style="color:#a3be8c;">output-file.html</span><span style="color:#c0c5ce;">", &amp;</span><span style="color:#b48ead;">mut</span><span style="color:#c0c5ce;"> parser);</span></pre>
+<p>Hopefully this lets me manage the complexity for whenever I want to add a new feature or parsing ability to the library. A lot of the comlexity still exists in one place, <code>roxy-cli</code>, but I'll hopefully break that down over time.</p>
+<h2>What's left</h2>
+<p>There's a bunch of stuff I didn't get to do. Two things I really want are an RSS feed generator, and streaming file inputs. Right now, the library loads the entire file into memory and works on it when it should be streaming it and processing it in chunks. I didn't have the time or energy to work on that, but maybe later.</p>
+
+</main>
+
+      </div>
+      <footer class="has-padding center">
+        
+        &copy; 2024 Rowan Vixen - Made with <a href="https://github.com/kitsunecafe/roxy">Roxy</a> <3
+        
+      </footer>
+    </div>
+</body>
+
+</html>
+
