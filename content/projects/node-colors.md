@@ -1,7 +1,0 @@
----
-title: Simple Node Colors
-date: 2019-05-23T00:00:00Z
-type: utility
-link: https://github.com/mochancrimthann/node-simple-colors
----
-Tool for coloring `console.log` output in Node.

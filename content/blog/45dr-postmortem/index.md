@@ -1,7 +1,6 @@
----
-title: 45 Day Roguelike Postmortem
-date: 2022-04-22
----
+{% extends "../../../layouts/index.html" %}
+
+{% block content %}
 # 45 Day Rogulike Postmortem
 
 I worked on a Roguelike game from 8 March 2022 to 22 April 2022. My motivations were to teach myself new things, develop my existing skills, and have fun with the development process. Two out of three isn't bad. [Give it a try.](https://mochancrimthann.itch.io/45dr)
@@ -31,3 +30,5 @@ The UI was rushed at times and required me to rewrite it a few times. Thankfully
 To my surprise, the most common question and feedback I received was about the "(worn)" tag that's affixed to equipped items. Many people thought it was related to a durability system which makes sense in retrospect -- you can't "wear" a sword. The reason for using "worn" rather than "equipped" was that I'd frequently seen it used in this context, and I wanted to maximize character space for item names. Thanks to everyone who caught this -- it is small but valuable feedback.
 
 It's too early to say if I want to come back and work on this game. I learned a lot from this experience, and I'm glad I did it. I'm thinking of writing articles on exactly how I implemented certain aspects of the game, so let me know if this would be valuable to you.
+{% endblock content %}
+

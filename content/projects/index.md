@@ -1,5 +1,2 @@
----
-title: Projects
-layout: project-index.html
----
+{% extends "../../layouts/project-index.html" %}
 

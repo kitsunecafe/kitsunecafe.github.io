@@ -8,7 +8,8 @@
   {% endblock title %}
 {% block body %}
 <main class="flex column has-border-radius has-padding has-bg has-shadow">
-    {{ content }}
+      {% block content %}
+      {% endblock content %}
 </main>
 {% endblock body %}
 

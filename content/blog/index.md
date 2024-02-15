@@ -1,6 +1,18 @@
----
-title: Blog
-layout: blog-index.html
-date: 2023-08-10
----
+{% extends "../../layouts/index.html" %}
+{% block body %}
+<main class="flex column has-border-radius has-padding has-bg has-shadow">
+  <ul class="no-decoration">
+  {% for post in blog
+    | values
+    | filter(attribute="date")
+    | sort(attribute="date")
+    | reverse %}
+    <li>
+      <a href="{{ post.path }}">{{ post.title }}</a>
+      <small class="muted">{{ post.date | date(format="%b %e, %Y") }}</small>
+    </li>
+  {% endfor %}
+  </ul>
+</main>
+{% endblock body %}
 

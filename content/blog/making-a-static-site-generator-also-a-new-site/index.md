@@ -1,7 +1,6 @@
----
-title: Making a Static Site Generator (Also a New Site)
-date: 2023-08-16T01:19:15
----
+{% extends "../../../layouts/index.html" %}
+
+{% block content %}
 # Making a Static Site Generator (Also a New Site)
 I decided to give my site a much-needed redesign, so in the spirit of making things harder than they need to be, I decided to make a static site generator. You might see "Made with Roxy" at the bottom of this page (unless you're reading this so far in the future that I've changed it again). Roxy is what I've decided to call this generator. I wanted to write a little about my experiences creating it.
 
@@ -48,4 +47,5 @@ There's a bunch of things Roxy *doesn't* do
 I ended up making bash files to do all that though and they're available in the repository for this website if you'd like to see or use them.
 
 The code is a disaster and needs to be refactored. I'll do that the minute I have a really good reason to. For now, it works well enough for me, and I *really* like using it. This is one of the times I'm very happy I decided to make something superfluous for myself.
+{% endblock content %}
 

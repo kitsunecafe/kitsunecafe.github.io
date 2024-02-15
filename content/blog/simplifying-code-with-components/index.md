@@ -1,7 +1,6 @@
----
-title: Simplifying Code with Components
-date: 2021-12-05
----
+{% extends "../../../layouts/index.html" %}
+
+{% block content %}
 # Simplifying Code with Components
 
 Unity is a component-based game engine. Without any context, "component" is a nebulous and vague term. Understanding what a component *is* becomes crucial to understanding Unity. In Unity's [Introduction to components](https://docs.unity3d.com/Manual/Components.html), they provide an unsatisfactory definition of a component.
@@ -201,3 +200,5 @@ public class PlayerInputProvider : MonoBehaviour, InputProvider
 ```
 
 Attach `PlayerInputProvider` to the player object and ensure the character moves again. A future component could be `EnemyInputProvider` which determines movement based on a `NavMeshAgent`. 
+{% endblock content %}
+

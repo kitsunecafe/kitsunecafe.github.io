@@ -2,22 +2,20 @@
 {% block body %}
 <main class="flex column has-border-radius has-padding has-bg has-shadow">
   <ul class="no-decoration">
-  {% for project in data.projects
-    | filter(attribute="frontmatter.date")
-    | sort(attribute="frontmatter.date")
+  {% for project in projects | values
+    | filter(attribute="date")
+    | sort(attribute="date")
     | reverse %}
-    {% if project.slug != slug %}
     <li>
       <div>
-        <a href="{{ project.frontmatter.link }}">{{ project.frontmatter.title }}</a>
-        <small class="accent">{{ project.frontmatter.type | capitalize }}</small>
-        <small class="muted">{{ project.frontmatter.date | date(format="%b %e, %Y") }}</small>
+        <a href="{{ project.link }}">{{ project.title }}</a>
+        <small class="accent">{{ project.type | join(sep=", ") | capitalize }}</small>
+        <small class="muted">{{ project.date | date(format="%b %e, %Y") }}</small>
       </div>
       <div>
-        {{ project.content }}
+        {{ project.description }}
       </div>
     </li>
-    {% endif %}
   {% endfor %}
   </ul>
 </main>

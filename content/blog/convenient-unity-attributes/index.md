@@ -1,7 +1,6 @@
----
-title: Convenient Unity Attributes
-date: 2021-12-09
----
+{% extends "../../../layouts/index.html" %}
+
+{% block content %}
 # Convenient Unity Attributes
 
 Unity offers a range of convenient ways to manipulate and hack its inspector. Unfortunately, thanks to the size of Unity's documentation, these types of methods go unnoticed.
@@ -227,3 +226,5 @@ public class Movement : MonoBehaviour
 Unity adds a `Rigidbody` if it doesn't already exist on the GameObject. Attempting to remove `Rigidbody` will cause an error.
 
 ![Screenshot of the error message](./remove-requiredcomponent.png)
+{% endblock content %}
+
