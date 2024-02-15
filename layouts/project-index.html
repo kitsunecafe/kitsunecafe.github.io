@@ -6,7 +6,7 @@
     | filter(attribute="date")
     | sort(attribute="date")
     | reverse %}
-    <li>
+    <li class="has-quarter-padding">
       <div>
         <a href="{{ project.link }}">{{ project.title }}</a>
         <small class="accent">{{ project.type | join(sep=", ") | capitalize }}</small>
