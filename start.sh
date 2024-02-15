@@ -11,7 +11,7 @@ if [ -f ".env" ]; then
   ./inotify.sh "./generate.sh" &
   build=$!
   ./generate.sh
-  cd "$DIST"
+  cd "$OUT"
   python3 -m http.server
 fi
 

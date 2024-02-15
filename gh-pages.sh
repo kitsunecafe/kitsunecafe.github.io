@@ -3,13 +3,13 @@
 if [ -f ".env" ]; then
 	source .env
 
-  rm -rf "$DIST"
-  git worktree add "$DIST" "$GH_PAGES_BRANCH"
+  rm -rf "$OUT"
+  git worktree add "$OUT" "$GH_PAGES_BRANCH"
   ./generate.sh
-  (cd "$DIST"; git add -f .)
-  (cd "$DIST"; git commit -m "Built from $(git log '--format=format:%H' main -1)")
+  (cd "$OUT"; git add -f .)
+  (cd "$OUT"; git commit -m "Built from $(git log '--format=format:%H' main -1)")
   git push origin "$GH_PAGES_BRANCH"
-  git worktree remove "$DIST"
+  git worktree remove "$OUT"
 fi
 
 

@@ -18,7 +18,7 @@ if [ -f ".env" ]; then
   }
    
   inotifywait --recursive --monitor --format "%e %w%f" \
-  --event modify,move,create,delete --exclude "$DIST" ./ \
+  --event modify,move,create,delete --exclude "$OUT" ./ \
   | while read changed; do
       echo $changed
       "$@"

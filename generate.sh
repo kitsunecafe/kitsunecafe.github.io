@@ -2,11 +2,9 @@
 
 if [ -f ".env" ]; then
   source .env
-  rm -rf "${DIST}/*"
-  mkdir -p "${DIST}/"
-  ../roxy/target/debug/roxy -o "${DIST}" -t Flatron.tmTheme
-  cp -r ./static/* "${DIST}/"
-  echo "$CNAME" > "${DIST}/CNAME"
+  rm -rf "${OUT}/*"
+  ../roxy-cli/target/debug/roxy_cli ${IN} ${OUT}
+  echo "$CNAME" > "${OUT}/CNAME"
 fi
 
 
