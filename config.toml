@@ -1,3 +1,6 @@
 [roxy]
 slug_limit=8
 
+[syntect]
+theme="Catppuccin-macchiato"
+theme_dir="./themes"
