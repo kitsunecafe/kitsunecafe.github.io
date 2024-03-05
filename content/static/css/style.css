@@ -7,7 +7,8 @@
   --white: #FAF9F6;
 
   --magenta: #CC85FF;
-  --dark-magenta: rgb(104, 0, 179);
+  --dark-magenta: #6800B3;
+  --darker-magenta: #53008f;
   --yellow: #E1FF00;
   --gold: #FFD700;
 
@@ -54,6 +55,9 @@
   --alt-font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
   --mono-font-family: 'Courier New', Courier, monospace;
 
+  --font-size-base: 18px;
+  --line-height: 1.4rem;
+
   --border-radius: 3px;
   --border-width: 1px;
   --border-color: var(--primary-color);
@@ -88,6 +92,8 @@ html, body {
   height: 100%;
   width: 100%;
   font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height);
 }
 
 body {
@@ -443,3 +449,38 @@ ul.no-decoration, ol.no-decoration {
   list-style-type: none;
 }
 
+button {
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  transition: 200ms;
+}
+
+button.primary {
+  background-color: var(--tertiary-color);
+  color: var(--font-color);
+}
+
+button.primary:hover,
+button.primary:focus {
+  background-color: var(--darker-magenta);
+}
