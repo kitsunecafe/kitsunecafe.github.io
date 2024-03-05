@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+dialog.modal {
+  background-color: var(--foreground-color);
+  color: var(--font-color);
+  border-color: var(--primary-color);
+  border-width: 1px;
+  border-radius: var(--border-radius);
+  max-width: 30%;
+  text-align: center;
+  z-index: 2;
+}
+
+dialog.modal::backdrop {
+  background-color: rgba(0, 0, 0, .9);
+}
